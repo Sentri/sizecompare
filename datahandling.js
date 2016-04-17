@@ -218,9 +218,9 @@ $(function(){
        }
    });
    $("#jsondata").on("click",selectAll);
-   setMetric(false);
    if (!checkHash()) {
        addCharacter(); 
+       setMetric(false);
    }
 });
 
