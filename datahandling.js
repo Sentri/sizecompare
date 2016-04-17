@@ -1,5 +1,5 @@
 var DATA_HASH;
-var validTypes = {"pony":1,"humanmale":2};
+var validTypes = {"pony":[285,578],"humanmale":[184,569]};
 
 function getMetric() {
     return document.getElementById("ismetric").checked;
@@ -95,7 +95,6 @@ function addCharacter(id, name, size, type) {
     }
     // finish
     $("#character-container").append(newrow);
-    fireUpdate();
 }
 
 function deleteme(e) {
@@ -141,7 +140,7 @@ function isValidData(data) {
         if (typeof data[i][3] !== "string") return false;
         if (data[i][2] < 0) return false;
         if (data[i][0].length < 1) return false;
-        if (typeof validTypes[data[i][3]] !== "undefined") return false;
+        if (typeof validTypes[data[i][3]] == "undefined") return false;
     }
     return true;
 }
@@ -150,6 +149,7 @@ function setFormData(data) {
     var name, id, size, type;
     if (!isValidData(data)) {
         console.log("Invalid data");
+        console.log(data);
         return false;
     }
     $("#character-container").children("div.character").remove();
@@ -204,7 +204,8 @@ function checkHash() {
 
 $(function(){
    $("#addnew").on("click", function(e){
-       addCharacter();       
+       addCharacter();    
+       fireUpdate();   
    });
    $("#btnmetric").on("click", function(e){
        setMetric(true);    
