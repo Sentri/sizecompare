@@ -220,7 +220,7 @@ $(function(){
    });
    $("#jsondata").on("click",selectAll);
    if (!checkHash()) {
-       addCharacter(); 
+       addCharacter(uid(),"", 1.8288, "humanmale"); 
        setMetric(false);
    }
 });
