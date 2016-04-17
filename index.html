@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Character size comparison</title>
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">
+                <h1>Character size comparison</h1>
+            </div>
+            <div class="aside">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <div class="btn-group topbtns" role="group">
+                            <button type="button" id="btnmetric" class="btn btn-default">Imperial</button>
+                            <button type="button" id="btnimperial" class="btn btn-default">Metric</button>
+                        </div>
+                        <input type="checkbox" name="ismetric" id="ismetric">
+                    </div>
+                    <div id="character-container">
+                        <template id="character-template">
+                            <div class="character">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <select class="form-control">
+                                            <option>Human (male)</option>
+                                            <option>Pony</option>
+                                        </select>
+                                        <label>Size:</label>
+                                        <div class="input-group">
+                                            <input type="text" size="4" class="form-control">
+                                            <span class="input-group-addon bigunit">ft</span>
+                                        </div>
+                                        <div class="input-group">
+                                            <input type="text" size="2" class="form-control">
+                                            <span class="input-group-addon smallunit">in</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" placeholder="Name (Optional)">
+                                        <button type="button" class="btn btn-default btn-sm btn-right">X</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-success" id="addnew">+ Add new character</button>
+                    </div>
+                </form>
+            </div>
+            <div class="canvas">
+                Pics here
+            </div>
+            <div class="footer">
+                <p>
+                    No guarantees of accuracy. For illustrative use only.<br>
+                    &copy; 2016 <a href="https://twitter.com/codesentri">@Codesentri</a>
+                </p>
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
+    

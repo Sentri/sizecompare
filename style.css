@@ -1,0 +1,58 @@
+.btn-right {
+    float: right;
+}
+
+.topbtns {
+    margin-bottom: 6px;
+}
+
+.character {
+    border: 2px solid #888;
+    border-radius: 6px;
+    margin: 0 0 6px 0;
+    padding: 6px;
+}
+
+.character .row:first-child {
+    margin-bottom: 6px;
+}
+
+
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0px 0.5em;
+}
+
+.header, .canvas, .aside, .footer {
+    flex: 1 100%;
+}
+
+.header {
+    border-bottom: 1px solid #ddd;
+}
+
+.aside {
+    padding: 6px 6px 6px 0;
+    border-right: 1px solid #ddd;
+}
+
+.canvas {
+    min-height: 600px;
+}
+
+.footer {
+}
+
+@media all and (min-width: 900px) {
+    .aside { 
+        max-width: 450px;
+        flex: 1 auto; 
+    }
+    .canvas { 
+        flex: 3 0px; 
+    }
+    .wrapper {
+        margin: 0px 2em;
+    }
+}
