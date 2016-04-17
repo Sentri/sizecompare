@@ -40,6 +40,8 @@
 .canvas {
     position: relative;
     min-height: 600px;
+    max-height: 800px;
+    overflow-x: scroll;
 }
 
 .canvasimage {
