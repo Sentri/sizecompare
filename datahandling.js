@@ -178,6 +178,7 @@ function updateMain(data) {
         + "#" + DATA_HASH
     );
     window.location.hash = "#" + DATA_HASH;
+    handleCanvas(data);
 }
 
 function checkHash() {
