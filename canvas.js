@@ -6,7 +6,6 @@ function handleCanvas(data) {
 }
 
 function newImage(id, name, size, type) {
-    console.log("create image "+id);
     if (typeof validTypes[type] === "undefined") return; 
     if (size <= 0) return;
     var image = $("<img>").addClass("canvasimage");
@@ -56,7 +55,6 @@ function syncElements(data) {
             deleteImage(k);
         }  
     }
-    console.log(contents);
     updateSizes();
 }
 
