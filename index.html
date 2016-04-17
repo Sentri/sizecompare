@@ -16,32 +16,32 @@
                             <button type="button" id="btnimperial" class="btn btn-default">Imperial</button>
                             <button type="button" id="btnmetric" class="btn btn-default">Metric</button>
                         </div>
-                        <input type="checkbox" name="ismetric" id="ismetric">
+                        <input type="checkbox" name="ismetric" id="ismetric" style="display:none">
                     </div>
                     <div id="character-container">
                         <template id="character-template">
-                            <div class="character">
+                            <div class="character" data-uid="">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <select class="form-control">
-                                            <option>Human (male)</option>
-                                            <option>Pony</option>
+                                        <select class="form-control character-type">
+                                            <option value="humanmale">Human (male)</option>
+                                            <option value="pony">Pony</option>
                                         </select>
                                         <label>Size:</label>
                                         <div class="input-group">
-                                            <input type="text" size="4" class="form-control">
+                                            <input type="text" size="4" class="form-control big-unit-value">
                                             <span class="input-group-addon bigunit">ft</span>
                                         </div>
                                         <div class="input-group">
-                                            <input type="text" size="2" class="form-control">
+                                            <input type="text" size="2" class="form-control small-unit-value">
                                             <span class="input-group-addon smallunit">in</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <input type="text" class="form-control" placeholder="Name (Optional)">
-                                        <button type="button" class="btn btn-default btn-sm btn-right">X</button>
+                                        <input type="text" class="form-control character-name" placeholder="Name (Optional)">
+                                        <button type="button" class="btn btn-default btn-sm btn-right xbutton">X</button>
                                     </div>
                                 </div>
                             </div>
@@ -56,6 +56,9 @@
                 Pics here
             </div>
             <div class="footer">
+                <p>
+                Link to this: <input type="text" id="jsondata">    
+                </p>
                 <p>
                     No guarantees of accuracy. For illustrative use only.<br>
                     &copy; 2016 <a href="https://twitter.com/codesentri">@Codesentri</a>
