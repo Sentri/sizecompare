@@ -150,8 +150,27 @@ function setFormData(data) {
     return true;
 }
 
+function fireUpdate() {
+    updateMain(getFormData());
+}
+
+function getStringified(data) {
+    return window.btoa(JSON.stringify(data));
+}
+
+function parseStringified(str) {
+    var parsed = window.atob(str);
+    try {
+        var data = JSON.parse(parsed);
+        return data;
+    } catch (e) {
+        console.log("Invalid hash");
+    }
+    return null;
+}
+
 function updateMain(data) {
-    DATA_HASH = window.btoa(JSON.stringify(data));
+    DATA_HASH = getStringified(data);
     var path = typeof window.location.path == "undefined" ? 
         window.location.pathname : window.location.path;
     $("#jsondata").val(
@@ -161,20 +180,12 @@ function updateMain(data) {
     window.location.hash = "#" + DATA_HASH;
 }
 
-function fireUpdate() {
-    // TODO: throttle
-    updateMain(getFormData());
-}
-
 function checkHash() {
     if (window.location.hash.length > 10) {
-        var base64 = window.atob(window.location.hash.substring(1));
-        try {
-            var data = JSON.parse(base64);
-            return setFormData(data);
-        } catch (e) {
-            console.log("Invalid hash");
-        }
+        var data = parseStringified(window.location.hash.substring(1));
+        if (data != null) {
+           return setFormData(data); 
+        } 
     }
     return false;
 }
