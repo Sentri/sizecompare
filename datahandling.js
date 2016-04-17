@@ -1,4 +1,5 @@
 var DATA_HASH;
+var validTypes = {"pony":1,"humanmale":2};
 
 function getMetric() {
     return document.getElementById("ismetric").checked;
@@ -128,7 +129,6 @@ function getFormData() {
 }
 
 function isValidData(data) {
-    var validTypes = ["pony","humanmale"];
     if (!Array.isArray(data)) return false;
     if (typeof data[0] !== "boolean") return false;
     if (data.length <= 1) return false;
@@ -141,7 +141,7 @@ function isValidData(data) {
         if (typeof data[i][3] !== "string") return false;
         if (data[i][2] < 0) return false;
         if (data[i][0].length < 1) return false;
-        if (validTypes.indexOf(data[i][3]) === -1) return false;
+        if (typeof validTypes[data[i][3]] !== "undefined") return false;
     }
     return true;
 }
@@ -170,8 +170,8 @@ function getStringified(data) {
 }
 
 function parseStringified(str) {
-    var parsed = window.atob(str);
     try {
+        var parsed = window.atob(str);
         var data = JSON.parse(parsed);
         return data;
     } catch (e) {
@@ -225,7 +225,7 @@ $(function(){
 });
 
 function uid() {
-    return 'xxxxxxxx'.replace(/[xy]/g, function(c) {
+    return 'xxxxx'.replace(/[xy]/g, function(c) {
         var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
         return v.toString(16);
     });
