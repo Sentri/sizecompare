@@ -1,0 +1,3 @@
+function handleCanvas(data) {
+    return;
+}
