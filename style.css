@@ -46,7 +46,7 @@
 
 .canvasimage {
     position: absolute;
-    bottom: 0;
+    bottom: 4px;
     opacity: 0.8;
 }
 
