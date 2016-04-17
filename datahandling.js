@@ -7,6 +7,7 @@ function getMetric() {
 function setMetric(isMetric) {
     document.getElementById("ismetric").checked = isMetric;
     updateMetric();
+    fireUpdate();
 }
 
 function getAbsValue(big, small) {
@@ -59,6 +60,13 @@ function updateMeasure(parentelement, isMetric) {
 function addCharacter(id, name, size, type) {
     var template = $("#character-template").html().trim();
     var newrow = $(template);
+    // get data from previous
+    if (typeof id === "undefined") {
+        var data = getFormData();
+        if (data.length > 1) {
+            type = data[data.length-1][3];
+        }
+    }
     // set measurement units
     updateMeasure(newrow, getMetric());
     // add event listeners
@@ -97,7 +105,7 @@ function deleteme(e) {
 
 function getFormData() {
     var cName, cType, cBigUnit, cSmallUnit, cId, char, obj;
-    var data = [];
+    var data = [getMetric()];
     var characterElements = $("#character-container").children("div.character");
     for (var i = 0; i < characterElements.length; i++) {
         char = $(characterElements[i]);
@@ -122,7 +130,9 @@ function getFormData() {
 function isValidData(data) {
     var validTypes = ["pony","humanmale"];
     if (!Array.isArray(data)) return false;
-    for (var i = 0; i < data.length; i++) {
+    if (typeof data[0] !== "boolean") return false;
+    if (data.length <= 1) return false;
+    for (var i = 1; i < data.length; i++) {
         if (!Array.isArray(data[i])) return false;
         if (data[i].length != 4) return false;
         if (typeof data[i][0] !== "string") return false;
@@ -143,7 +153,8 @@ function setFormData(data) {
         return false;
     }
     $("#character-container").children("div.character").remove();
-    for (var i = 0; i < data.length; i++) {
+    setMetric(data[0]);
+    for (var i = 1; i < data.length; i++) {
         addCharacter(data[i][0], data[i][1], data[i][2], data[i][3]);
     }
     updateMain(data);
