@@ -11,12 +11,15 @@ function newImage(id, name, size, type) {
     if (size <= 0) return;
     var image = $("<img>").addClass("canvasimage");
     image.attr("src", "gfx/"+type+".png");
-    $("#canvas").append(image);
+    var wrap = $("<div>").addClass("canvaswrap");
+    var span = $("<span>").text("");
+    wrap.append(image).append(span);
+    $("#canvas").append(wrap);
     contents[id] = {
         "name": name,
         "size": size,
         "type": type,
-        "element": image[0],
+        "element": wrap[0],
     }
 }
 
@@ -26,7 +29,7 @@ function updateImage(id, name, size, type) {
     contents[id].name = name;
     contents[id].size = size;
     contents[id].type = type;
-    var image = $(contents[id].element);
+    var image = $(contents[id].element).children("img");
     image.attr("src", "gfx/"+type+".png");
 }
 
@@ -69,7 +72,12 @@ function updateSizes() {
     for (var k in contents) {
         var dim = validTypes[contents[k].type];
         var img_h = IMAGEHEIGHT * (contents[k].size / maxSize);
-        $(contents[k].element).css("height", img_h+"px").css("left",xpos+"px");
+        var wrap = $(contents[k].element);
+        var image = wrap.children("img");
+        var label = wrap.children("span");
+        label.text(contents[k].name);
+        image.css("height", img_h+"px");
+        wrap.css("left",xpos+"px");
         var w = (dim[0]/dim[1])*img_h;
         xpos += w;
     }

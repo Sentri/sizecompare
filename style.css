@@ -45,9 +45,21 @@
 }
 
 .canvasimage {
+    position: relative;
+    bottom: 0;
+    opacity: 0.8;
+}
+
+.canvaswrap {
     position: absolute;
     bottom: 4px;
-    opacity: 0.8;
+}
+
+.canvaswrap span {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    font-size: 12px;
 }
 
 @media all and (min-width: 900px) {
