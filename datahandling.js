@@ -1,5 +1,5 @@
 var DATA_HASH;
-var validTypes = {"pony":[285,578],"humanmale":[184,569]};
+var validTypes = {"pony":[285,578],"humanmale":[184,569],"wolf":[676,570],"eagle":[450,399]};
 
 function getMetric() {
     return document.getElementById("ismetric").checked;
