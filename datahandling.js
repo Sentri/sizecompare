@@ -1,5 +1,13 @@
 var DATA_HASH;
-var validTypes = {"pony":[285,578],"humanmale":[184,569],"wolf":[676,570],"eagle":[450,399]};
+var validTypes = {
+    "pony": [285, 578],
+    "humanmale": [184, 569],
+    "wolf": [676, 570],
+    "eagle": [450, 399],
+    "dragon": [450, 413],
+    "tree": [395, 700],
+    "building": [529,318],
+};
 
 function getMetric() {
     return document.getElementById("ismetric").checked;
@@ -19,8 +27,11 @@ function getAbsValue(big, small) {
     }
 }
 
-function getUnits(aval) {
-    if (getMetric()) {
+function getUnits(aval, metric) {
+    if (typeof metric === 'undefined') {
+        metric = getMetric();
+    }
+    if (metric) {
         var meters = Math.floor(aval);
         var cm = Math.floor((aval-meters)*100);
         return [meters, cm];
