@@ -1,12 +1,12 @@
 var DATA_HASH;
 var validTypes = {
-    "pony": [285, 578],
-    "humanmale": [184, 569],
-    "wolf": [676, 570],
-    "eagle": [450, 399],
-    "dragon": [450, 413],
-    "tree": [395, 700],
-    "building": [529,318],
+    "pony": [285, 578, 1.2],
+    "humanmale": [184, 569, 1.85],
+    "wolf": [676, 570, 0.85],
+    "eagle": [450, 399, 0.88],
+    "dragon": [450, 413, 5.5],
+    "tree": [395, 700, 10],
+    "building": [529,318, 6.5],
 };
 
 function getMetric() {
@@ -100,6 +100,13 @@ function addCharacter(id, name, size, type) {
         var units = getUnits(size);
         newrow.find(".big-unit-value").val(units[0]);
         newrow.find(".small-unit-value").val(units[1]);
+    } else {
+        if (typeof type !== "undefined") {
+            var defaultSize = validTypes[type][2];
+            var units = getUnits(defaultSize, true);
+            newrow.find(".big-unit-value").val(units[0]);
+            newrow.find(".small-unit-value").val(units[1]);
+        }
     }
     if (typeof name !== "undefined") {
         newrow.find(".character-name").val(name);
